@@ -1,0 +1,21 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'idea'
+}
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+mainClassName = 'HelloVerticle'
+
+def vertxVersion = '3.8.0'
+def mainVerticleName = ''
+
+dependencies {
+    compile "io.vertx:vertx-core:$vertxVersion"
+}
