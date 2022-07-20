@@ -1,15 +1,11 @@
-package com.spc;
+package com.spc.vertx.cpt2;
 
 import io.vertx.core.AbstractVerticle;
-import io.vertx.core.AsyncResult;
 import io.vertx.core.Future;
-import io.vertx.core.Handler;
 import io.vertx.core.buffer.Buffer;
 import io.vertx.core.eventbus.EventBus;
 import io.vertx.core.logging.Logger;
 import io.vertx.core.logging.LoggerFactory;
-import io.vertx.core.net.NetClient;
-import io.vertx.core.net.NetSocket;
 
 import java.io.Console;
 
@@ -24,6 +20,7 @@ public class TCPChatClientWorkerVerticle extends AbstractVerticle {
     @Override
     public void start(Future<Void> startFuture) throws Exception {
 
+        //이벤트 버스 생성
         eb = vertx.eventBus();
         readline = true;
 
@@ -36,6 +33,7 @@ public class TCPChatClientWorkerVerticle extends AbstractVerticle {
                     readline = false;
                 }else{
                     logger.info("TCPChatClientWorkerVerticle event bus is sending data : " + line);
+                    //이벤트 버스 통해 입력값 발송
                     eb.send("com.devop.vertx.chat", Buffer.buffer().appendString(line));
                 }
             }

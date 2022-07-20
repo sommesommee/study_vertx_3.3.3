@@ -1,4 +1,4 @@
-package com.spc;
+package com.spc.vertx.cpt1;
 
 import io.vertx.core.*;
 import io.vertx.core.logging.Logger;
